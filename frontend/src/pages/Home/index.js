@@ -4,28 +4,38 @@ import CityWeatherCard from '../../components/CityWeatherCard'
 import { useState, useEffect } from 'react'
 import NotFoundText from '../../components/NotFoundText'
 
-import { Container } from './style'
+import api from '../../services/api'
 
-const CITY_EXAMPLE = {
-    "city": "London",
-    "description": "broken clouds",
-    "temperature": "9ºC"
-}
+import { Container } from './style'
 
 const Home = () => {
     const [city, setCity] = useState();
     const [data, setData] = useState({});
-    const [showNotFoundText, setShowNotFoundText] = useState(false)
-    const [showCityCard, setShowCityCard] = useState(false)
+    const [showNotFoundText, setShowNotFoundText] = useState(false);
+    const [showCityCard, setShowCityCard] = useState(false);
 
     useEffect(() => {
-        if(city){
-            setData(CITY_EXAMPLE);
-            setShowCityCard(true)
-        }else{
-            setShowCityCard(false)
+        if (city) {
+            find_city_by_name();
+        } else {
+            setShowCityCard(false);
         }
     }, [city])
+
+    const find_city_by_name = async () => {
+        const response = await api.get("/weather/" + city)
+            .then(response => {
+                setData(response.data);
+                setShowNotFoundText(false);
+                setShowCityCard(true);
+            })
+            .catch((err) => {
+                setShowCityCard(false);
+                if (err.response.status === 404) {
+                    setShowNotFoundText(true);
+                }
+            });
+    }
 
     return (
         <Container>
