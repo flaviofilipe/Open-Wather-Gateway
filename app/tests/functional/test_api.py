@@ -23,8 +23,7 @@ def test_list_all_items_with_max_param(app):
 def test_find_city_by_name(app):
     with app.test_client() as test_client:
         response = test_client.get('/weather/London')
-        assert 200 == response.get_json().get('cod')
-        assert 'London' == response.get_json().get('name')
+        assert 'London' == response.get_json().get('city')
 
 
 def test_not_found_city_in_api(app):
