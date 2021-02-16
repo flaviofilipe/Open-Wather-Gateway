@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Blueprint, jsonify, request, render_template
+from flask import Blueprint, jsonify, request, render_template, Response
 
 bp_views = Blueprint('views', __name__)
 api_key = os.getenv('API_KEY')
@@ -23,7 +23,7 @@ def weather_city(city_name: str):
     response = requests.get(api_url+'&q='+city_name).json()
 
     if response.get('cod') != 200:
-        return response
+        return jsonify(response), 404
 
     data = {
         'city': response.get('name'),
