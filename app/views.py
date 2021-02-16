@@ -20,5 +20,8 @@ def weather():
 
 @bp_views.route('/weather/<city_name>', methods=['GET'])
 def weather_city(city_name: str):
-    response = {'param': city_name}
-    return jsonify(response)
+    response = requests.get(api_url+'&q='+city_name)
+
+    print(response.json())
+    return response.json()
+
