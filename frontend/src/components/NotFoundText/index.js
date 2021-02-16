@@ -1,9 +1,9 @@
 import React from 'react'
 import {Message} from './style'
 
-const NotFoundText = () => {
+const NotFoundText = ({show}) => {
     return (
-        <Message>Sorry. We couldn't find the specified city.</Message>
+        <Message show={show}>Sorry. We couldn't find the specified city.</Message>
     );
 }
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Card, CardDescriptions, CardTemp} from './style'
 
-const CityWeatherCard = () => {
+const CityWeatherCard = ({data, show}) => {
     return (
-        <Card>
-            <CardDescriptions>Florianópolis</CardDescriptions>
-            <CardTemp>22ºC</CardTemp>
-            <CardDescriptions>Light Rain</CardDescriptions>
+        <Card show={show}>
+            <CardDescriptions>{data.city}</CardDescriptions>
+            <CardTemp>{data.temperature}</CardTemp>
+            <CardDescriptions>{data.description}</CardDescriptions>
         </Card>
     )
 }

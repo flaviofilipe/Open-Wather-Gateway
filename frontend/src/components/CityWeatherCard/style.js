@@ -10,6 +10,7 @@ export const Card = styled.div`
     justify-content: center;
     height: 200px;
     width: 200px;
+    display: ${prpos => prpos.show ? 'block' : 'none'};
 `
 
 export const CardDescriptions = styled.h3`
