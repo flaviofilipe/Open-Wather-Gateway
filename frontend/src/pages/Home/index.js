@@ -3,14 +3,16 @@ import InputSearch from '../../components/InputSearch'
 import CityWeatherCard from '../../components/CityWeatherCard'
 import { useState, useEffect } from 'react'
 import NotFoundText from '../../components/NotFoundText'
+import HistoricList from '../../components/HistoricList'
 
 import api from '../../services/api'
 
-import { Container } from './style'
+import { Container } from './styles'
 
 const Home = () => {
     const [city, setCity] = useState();
     const [data, setData] = useState({});
+    const [historicData, setHistoricData] = useState({});
     const [showNotFoundText, setShowNotFoundText] = useState(false);
     const [showCityCard, setShowCityCard] = useState(false);
 
@@ -43,6 +45,7 @@ const Home = () => {
             <InputSearch setCity={setCity} />
             <NotFoundText show={showNotFoundText} />
             <CityWeatherCard data={data} show={showCityCard} />
+            <HistoricList data={historicData} />
         </Container>
     );
 }

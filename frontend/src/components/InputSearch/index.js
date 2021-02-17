@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputLine } from './style'
+import { InputLine } from './styles'
 
 const InputSearch = ({ setCity }) => {
     

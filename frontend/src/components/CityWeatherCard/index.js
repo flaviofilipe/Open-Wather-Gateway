@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, CardDescriptions, CardTemp} from './style'
+import { Card, CardDescriptions, CardTemp} from './styles'
 
-const CityWeatherCard = ({data, show}) => {
+const CityWeatherCard = ({data, show=true}) => {
     return (
         <Card show={show}>
             <CardDescriptions>{data.city}</CardDescriptions>

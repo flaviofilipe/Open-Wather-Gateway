@@ -1,5 +1,5 @@
 import React from 'react'
-import {Message} from './style'
+import {Message} from './styles'
 
 const NotFoundText = ({show}) => {
     return (
