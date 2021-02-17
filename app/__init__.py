@@ -1,10 +1,19 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
+from flask_migrate import Migrate
+
+from .model import configure as config_db
+# from .serealizer import configure as config_ma
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object('app.config')
     cors = CORS(app)
+
+    config_db(app)
+    # config_ma(app)
+
+    Migrate(app, app.db)
     
     from app.views import bp_views
     app.register_blueprint(bp_views)
