@@ -27,19 +27,17 @@ venv\Scripts\activate
 
 ### Install the requirements
 ```
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
-### Create database and run migrations
-```
-flask db init
-```
-```
-flask db update
-```
 ###  Create .env
 - Copy .env-example and rename to .env
 - Set in `API_KEY` the Open Weather key [?](https://openweathermap.org/appid)
+
+### Create database and run migrations
+```
+flask db update
+```
 
 ###  Run
 ```
