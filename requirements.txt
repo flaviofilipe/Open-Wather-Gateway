@@ -6,6 +6,7 @@ chardet==4.0.0
 click==7.1.2
 Flask==1.1.2
 Flask-Cors==3.0.10
+flask-marshmallow==0.14.0
 Flask-Migrate==2.6.0
 Flask-SQLAlchemy==2.4.4
 idna==2.10
@@ -16,6 +17,7 @@ Jinja2==2.11.3
 lazy-object-proxy==1.4.3
 Mako==1.1.4
 MarkupSafe==1.1.1
+marshmallow==3.10.0
 mccabe==0.6.1
 packaging==20.9
 pluggy==0.13.1
