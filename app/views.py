@@ -1,6 +1,7 @@
 import os
 import requests
 from flask import Blueprint, jsonify, current_app, request
+from .cache import cache
 from .serializer import HistoricSchema
 from .model import Historic
 
@@ -23,6 +24,7 @@ def weather():
 
 
 @bp_views.route('/weather/<city_name>', methods=['GET'])
+@cache.cached(timeout=30)
 def weather_city(city_name: str):
     response = requests.get(api_url+'&q='+city_name).json()
 
