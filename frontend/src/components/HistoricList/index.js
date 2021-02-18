@@ -8,13 +8,15 @@ const DATA = {
     "temperature": "9ºC"
   }
 const HistoricList = ({data}) => {
+    if(data.length == 0){
+        return <></>;
+    }
+
     return (
         <List>
-            <CityWeatherCard data={DATA} />
-            <CityWeatherCard data={DATA} />
-            <CityWeatherCard data={DATA} />
-            <CityWeatherCard data={DATA} />
-            <CityWeatherCard data={DATA} />
+            {
+                data.length > 0 && data.map(city => <CityWeatherCard key={city.id} data={city} />)
+            }
         </List>
     )
 }

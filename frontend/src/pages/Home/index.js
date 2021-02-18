@@ -17,8 +17,13 @@ const Home = () => {
     const [showCityCard, setShowCityCard] = useState(false);
 
     useEffect(() => {
+        load_historic()
+    },[])
+
+    useEffect(() => {
         if (city) {
             find_city_by_name();
+            load_historic()
         } else {
             setShowCityCard(false);
         }
@@ -36,6 +41,16 @@ const Home = () => {
                 if (err.response.status === 404) {
                     setShowNotFoundText(true);
                 }
+            });
+    }
+
+    const load_historic = async () => {
+        const response = await api.get("/weather?max=5")
+            .then(response => {
+                setHistoricData(response.data);
+            })
+            .catch((err) => {
+                console.log(err.response);
             });
     }
 
